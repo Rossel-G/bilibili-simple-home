@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           bilibili搜索引擎首页样式
 @namespace      hakadao-bilibili-simple-home
-@version        1.9.3
+@version        1.9.4
 @description    b站搜索引擎首页样式风格，支持几种不同的样式效果
 @author         Hakadao <a578457889743@gmail.com> (https://hakadao.cc)
 @homepageURL    https://github.com/Rossel-G/bilibili-simple-home
@@ -918,9 +918,9 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 
 
 	/*去除礙眼物*/
-	/*顶栏左侧多余项目，保留首页按钮（新版为 div.left-entry__item，不再使用 li）*/
+	/*顶栏左侧多余项目，保留首页按钮（新版为 div.left-entry__item，不再使用 li）
+	  首页在未滚动与吸顶两种状态下都保留，作为左上角唯一入口*/
 	.bili-header .left-entry .left-entry__item:not(.home-page-entry),
-	.bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .bili-header__bar .left-entry .home-page-entry,
 	/*大会员（新版以 .vip-entry 标识，不再靠 li 序号）*/
 	.bili-header .right-entry .vip-entry,
 	/*热门搜寻*/
@@ -1485,8 +1485,19 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 			/* 		border-color: white; */
 			background: var(--a-theme-color)
 	}
-	/*搜索栏下方分区条*/
-	.header-channel {
+	/*搜索栏下方分区条（左侧抽屉）
+	  2026 新版 DOM：
+	    .header-channel
+	      └ .header-channel-fixed
+	          ├ .header-channel-fixed-left  > a.left-fixed-channel（动态 / 热门）
+	          ├ .header-channel-fixed-center（竖分隔线）
+	          └ .header-channel-fixed-right > -list / -side-list / -bottom-list
+	                                           > a.channel-item（番剧/电影/国创…）
+	  旧版的 .header-channel-fixed-right-item / -right-left / .left-bottom 已被移除。
+	  B 站新版用 `.header-channel .header-channel-fixed …` 多级选择器 + grid 把内部排成
+	  横向多条，单个类选择器赢不了，所以这里统一加 `html body` 前缀，布局属性用 !important
+	  锁定为纵向单列；外层仍保持"贴左边缘、悬停滑出"的抽屉形态，不再挂在顶栏跟随滚动。*/
+	html body .header-channel {
 			background: transparent;
 			backdrop-filter: var(--a-filter-glass);
 			background-color: var(--a-elevated-1);
@@ -1503,13 +1514,13 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 			transition: .3s;
 			z-index: 10;
 	}
-	.header-channel:hover {
+	html body .header-channel:hover {
 			transform: translateZ(0) translateX(0)
 	}
-	.header-channel:hover::after {
+	html body .header-channel:hover::after {
 			opacity: 0;
 	}
-	.header-channel::after {
+	html body .header-channel::after {
 			content: '➜';
 			color: var(--a-text-2);
 			display: flex;
@@ -1529,7 +1540,7 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 			transition: .3s;
 	}
 	/*滑动边缘打开分区条区域*/
-	.header-channel::before {
+	html body .header-channel::before {
 			content: '';
 			position: absolute;
 			top: 0;
@@ -1537,57 +1548,85 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 			width: 100%;
 			height: 100%;
 	}
-	.header-channel-fixed {
-			display: flex;
+	html body .header-channel .header-channel-fixed {
+			display: flex !important;
 			flex-direction: column;
+			align-items: stretch;
+			justify-content: flex-start;
+			width: 100%;
 			height: 100%;
-			max-height: unset;
-			padding: 1rem .5rem 1rem;
-			overflow-y: scroll;
+			max-height: unset !important;
+			padding: 1rem .5rem 1rem !important;
+			overflow-y: auto;
+			overflow-x: hidden;
 	}
 	/*动态 热门 频道*/
-	.header-channel-fixed-left {
+	html body .header-channel .header-channel-fixed-left {
+			align-self: stretch !important;
 			flex-direction: column;
+			align-items: stretch;
 			width: 100%;
 			min-width: unset;
-			align-items: center;
+			gap: .25rem;
 	}
-	/*分区*/
-	.header-channel-fixed-right,
-	.header-channel-fixed-right-left .left-top,
-	.header-channel-fixed-right-right,
-	.header-channel-fixed-right .left-bottom {
-			display: flex;
-			flex-direction: column;
-			grid-gap: .5rem;
-	}
-	.header-channel-fixed-right {
+	html body .header-channel .header-channel-fixed-left .left-fixed-channel {
 			width: 100%;
+			max-width: unset;
+			min-width: unset;
+			justify-content: center;
+			border-radius: var(--a-radius);
+			transition: .3s;
 	}
-	.header-channel-fixed-right .left-bottom {
-			/*添加padding防止不显示公益 公开课分区*/
-			padding-bottom: 1rem
+	html body .header-channel .header-channel-fixed-left .left-fixed-channel:hover {
+			background-color: var(--a-fill-1);
 	}
-
-	.header-channel-fixed-right-item {
+	/*竖分隔线在纵向布局里没有意义；列表内的分隔同理*/
+	html body .header-channel .header-channel-fixed-center,
+	html body .header-channel .header-channel-fixed-list-center {
+			display: none !important;
+	}
+	/*分区容器*/
+	html body .header-channel .header-channel-fixed-right {
+			display: flex !important;
+			flex-direction: column;
+			align-self: stretch !important;
+			width: 100%;
+			padding-right: 0 !important;
+			gap: .25rem;
+	}
+	/*分区列表：新版是 inline-grid + 多列，这里统一压成单列*/
+	html body .header-channel .header-channel-fixed-right .header-channel-fixed-list,
+	html body .header-channel .header-channel-fixed-right .header-channel-fixed-side-list,
+	html body .header-channel .header-channel-fixed-right .header-channel-fixed-bottom-list {
+			display: flex !important;
+			flex-direction: column;
+			grid-template-columns: none !important;
+			grid-template-rows: none !important;
+			grid-auto-flow: row !important;
+			grid-column: auto !important;
+			width: 100%;
+			height: auto !important;
+			gap: .25rem;
+	}
+	/*分区项（新版为 .channel-item，不再是 -right-item）*/
+	html body .header-channel .header-channel-fixed-right .channel-item {
 			background-color: unset;
 			border: none;
 			max-width: unset;
 			min-width: unset;
 			width: 100%;
+			height: auto;
+			line-height: var(--item-height, 28px);
+			padding: 0 .25rem;
+			border-radius: var(--a-radius);
 			transition: .3s;
 	}
-	.header-channel-fixed-right-item:hover {
+	html body .header-channel .header-channel-fixed-right .channel-item:hover {
 			background-color: var(--a-fill-1);
 	}
-	/*分区下拉*/
-	.header-channel-fixed-arrow {
-			display: none;
-	}
-	/* 动态和热门 */
-	.header-channel-fixed .only-two-entry {
-			width: 100%;
-			min-width: 100%;
+	/*分区下拉箭头（新版为 .header-channel-fixed-arrow，纵向布局不需要）*/
+	html body .header-channel .header-channel-fixed-arrow {
+			display: none !important;
 	}
 	/*推介轮播图*/
 	.recommended-swipe-body {
