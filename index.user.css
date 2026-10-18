@@ -1,12 +1,11 @@
 /* ==UserStyle==
 @name           bilibili搜索引擎首页样式
 @namespace      hakadao-bilibili-simple-home
-@version        1.9.1
+@version        1.9.2
 @description    b站搜索引擎首页样式风格，支持几种不同的样式效果
 @author         Hakadao <a578457889743@gmail.com> (https://hakadao.cc)
 @homepageURL    https://github.com/hakadao/bilibili-simple-home
 @supportURL     https://github.com/hakadao/bilibili-simple-home/issues
-@updateURL      https://userstyles.world/api/style/3022.user.css
 @license        MIT
 @preprocessor   uso
 
@@ -151,12 +150,12 @@
 		}
 
 		/*搜索框容器*\/
-        #app .bili-header :not(.slide-down) .center-search-container .center-search__bar {
+        #app .bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .center-search-container .center-search__bar {
 			transform: translateY(12vh) !important;
         }
 
 		@media screen and (max-height: 830px) {
-            #app .bili-header :not(.slide-down) .center-search-container .center-search__bar {
+            #app .bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .center-search-container .center-search__bar {
                 transform: translateY(70px) !important;
             }
         }
@@ -503,7 +502,7 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 
     TOPLINK_2 "效果2（胶囊模式）" <<<EOT
 		/*新版首页适配*\/
-		.bili-header :not(.slide-down) .right-entry {
+		.bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .right-entry {
 			backdrop-filter: var(--a-filter-glass);
 			border-radius: 100px;
 			box-shadow: var(--a-depth-1);
@@ -552,32 +551,32 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 
 @advanced dropdown CAPSULE_DESIGN_DOWN "顶栏右侧文字颜色设计（滚动后）" {
     CAPSULE_DESIGN_1 "默认设计" <<<EOT
-	.bili-header .bili-header__bar.slide-down .right-entry__outside .right-entry-icon,
-	.bili-header .bili-header__bar.slide-down .right-entry__outside .right-entry-text {
+	.bili-header.bili-header--slide-down .bili-header__bar .right-entry__outside .right-entry-icon,
+	.bili-header.bili-header--slide-down .bili-header__bar .right-entry__outside .right-entry-text {
 		color: var(--a-text-1)!important;
 		filter: none;
 	}
     EOT;
 
     CAPSULE_DESIGN_2 "跟随主题色" <<<EOT
-	.bili-header .bili-header__bar.slide-down .right-entry__outside .right-entry-icon,
-	.bili-header .bili-header__bar.slide-down .right-entry__outside .right-entry-text {
+	.bili-header.bili-header--slide-down .bili-header__bar .right-entry__outside .right-entry-icon,
+	.bili-header.bili-header--slide-down .bili-header__bar .right-entry__outside .right-entry-text {
 		color: var(--a-theme-color) !important;
 		filter: drop-shadow(0 0 8px var(--a-theme-color)) !important;
 	}
     EOT;
 
     CAPSULE_DESIGN_3 "白色" <<<EOT
-	.bili-header .bili-header__bar.slide-down .right-entry__outside .right-entry-icon,
-	.bili-header .bili-header__bar.slide-down .right-entry__outside .right-entry-text {
+	.bili-header.bili-header--slide-down .bili-header__bar .right-entry__outside .right-entry-icon,
+	.bili-header.bili-header--slide-down .bili-header__bar .right-entry__outside .right-entry-text {
 		color: #FFF !important;
 		filter: none;
 	}
     EOT;
 
     CAPSULE_DESIGN_4 "黑色" <<<EOT
-	.bili-header .bili-header__bar.slide-down .right-entry__outside .right-entry-icon,
-	.bili-header .bili-header__bar.slide-down .right-entry__outside .right-entry-text {
+	.bili-header.bili-header--slide-down .bili-header__bar .right-entry__outside .right-entry-icon,
+	.bili-header.bili-header--slide-down .bili-header__bar .right-entry__outside .right-entry-text {
 		color: #000 !important;
 		filter: none;
 	}
@@ -590,7 +589,7 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 
     SEARCHBAR_DESIGN_2 "线条设计" <<<EOT
         #internationalHeader.international-header:not(.fixed-top) .nav-search #nav_searchform,
-        .bili-header :not(.slide-down) .center-search-container .center-search__bar #nav-searchform{
+        .bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .center-search-container .center-search__bar #nav-searchform{
             backdrop-filter: none!important;
             background: unset!important;
             border: none!important;
@@ -601,29 +600,29 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
             margin-bottom: .5em;
 			filter: drop-shadow(0 2px 4px rgb(0 0 0 / 40%));
         }
-        .bili-header :not(.slide-down) .center-search-container .center-search__bar .nav-search-content
+        .bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .center-search-container .center-search__bar .nav-search-content
         {
             padding: unset!important;
         }
-        .bili-header :not(.slide-down) .center-search-container .center-search__bar #nav-searchform{
+        .bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .center-search-container .center-search__bar #nav-searchform{
             padding-left: unset!important;
         }
         #internationalHeader.international-header:not(.fixed-top) .nav-search .nav-search-keyword,
-        .bili-header :not(.slide-down) .center-search-container .center-search__bar #nav-searchform .nav-search-input{
+        .bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .center-search-container .center-search__bar #nav-searchform .nav-search-input{
             color: white!important;
 			filter: drop-shadow(0 2px 4px rgb(0 0 0 / 30%));
         }
         .international-header:not(.fixed-top) .bili-icon_dingdao_sousuo::before,
-        .bili-header :not(.slide-down) .center-search-container .center-search__bar .nav-search-btn{
+        .bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .center-search-container .center-search__bar .nav-search-btn{
             color: white!important;
         }
 		
 		/*33娘处于线条设计搜索条位置调整（新版首页）*\/
-		.bili-header :not(.slide-down) .center-search-container .center-search__bar::after {
+		.bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .center-search-container .center-search__bar::after {
 			right: -40px !important;
 			top: -62px !important;
 		}
-		.bili-header :not(.slide-down) .center-search-container .center-search__bar:focus-within::after {
+		.bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .center-search-container .center-search__bar:focus-within::after {
 			transform: translateX(-10px) !important;
 			z-index: 10;
 			pointer-events: none;
@@ -651,7 +650,7 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
             pointer-events: none;
         }
 
-        .bili-header .bili-header__bar.slide-down::before {
+        .bili-header.bili-header--slide-down .bili-header__bar::before {
             background: transparent !important;
             backdrop-filter: unset !important;
         }
@@ -690,7 +689,7 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 @advanced dropdown SHOW_33 "搜索条聚焦后显示33娘" {
 	SHOW_33_ON "开启" <<<EOT
         .international-header .nav-search::after,
-        .bili-header :not(.slide-down) .center-search-container .center-search__bar::after{
+        .bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .center-search-container .center-search__bar::after{
             content: '';
             position: absolute;
             top: -60px;
@@ -704,18 +703,18 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
             opacity: 0;
         }
 
-        .bili-header :not(.slide-down) .center-search-container .center-search__bar::after {
+        .bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .center-search-container .center-search__bar::after {
             background: url(https://cdn.jsdelivr.net/gh/hakadao/bilibili-simple-home@master/img/searchBar_33_2.png);
             background-size: cover;
         }
 
         .international-header .nav-search:focus-within::after,
-        .bili-header :not(.slide-down) .center-search-container .center-search__bar:focus-within::after{
+        .bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .center-search-container .center-search__bar:focus-within::after{
             transform: translatey(-20px);
             opacity: 1;
         } 
 
-        .bili-header :not(.slide-down) #nav-searchform {
+        .bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) #nav-searchform {
             overflow: unset!important;
         }
     EOT;
@@ -884,6 +883,26 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 	/**
  *新版首页支援
  */
+	/* ------------------------------------------------------------------
+	 * 新版顶栏（2026 改版）适配说明
+	 * ------------------------------------------------------------------
+	 * 旧版：滚动后给 .bili-header__bar 加 .slide-down，
+	 *       样式用 `.bili-header :not(.slide-down) ...` 判断"未滚动"。
+	 *
+	 * 新版：状态类改挂在 .bili-header 自身，取值
+	 *       .bili-header--large / --mini / --fixed / --slide-down，
+	 *       且 .bili-header__menu 与 .bili-header__bar 合并为同一元素，
+	 *       顶栏元素本身不再带 .slide-down。
+	 *
+	 * 若继续沿用旧守卫，`:not(.slide-down)` 恒为真，
+	 * 滚动后搜索框的 translateY(30vh) 仍会生效，而顶栏此时已
+	 * position: fixed 钉在视口顶部，搜索框就会一直悬在视口中线
+	 * 并跟随页面滚动。
+	 *
+	 * 本文件统一改写为：
+	 *       未滚动 → .bili-header:not(.bili-header--slide-down):not(.bili-header--fixed)
+	 *       已滚动 → .bili-header.bili-header--slide-down
+	 * ------------------------------------------------------------------ */
 	/*  	body {
 	 background: var(--a-bgimg) center/cover var(--a-bgcolor) fixed !important;
 	will-change: all;
@@ -900,7 +919,7 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 	/*去除礙眼物*/
 	/*顶栏左侧多余项目，保留首页按钮*/
 	.bili-header .left-entry li:not(:nth-child(1)),
-	.bili-header .bili-header__bar:not(.slide-down) .left-entry li:nth-child(1),
+	.bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .bili-header__bar .left-entry li:nth-child(1),
 	/*大会员*/
 	.bili-header .right-entry li:nth-child(2),
 	/*热门搜寻*/
@@ -965,7 +984,7 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 			display: flex !important;
 	}
 	/*内测顶栏*/
-	.bili-feed4 .bili-header .slide-down {
+	.bili-feed4 .bili-header.bili-header--slide-down .bili-header__bar {
 			box-shadow: none !important;
 	}
 	.bili-header .left-entry {
@@ -998,7 +1017,7 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 			}
 	}
 	/*顶栏处于下拉状态时*/
-	.bili-header .bili-header__bar.slide-down {
+	.bili-header.bili-header--slide-down .bili-header__bar {
 			background: unset;
 			box-shadow: none;
 			animation: .5s headerSlideDown;
@@ -1018,11 +1037,11 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 			transition: .3s;
 	}
 	/*当顶栏滑下时，制造出渐变遮罩效果*/
-	.bili-header .bili-header__bar.slide-down::after {
+	.bili-header.bili-header--slide-down .bili-header__bar::after {
 			opacity: 1;
 	}
 	/*顶栏右侧内容 帐号 消息 动态 收藏...*/
-	.bili-header .slide-down .right-entry {
+	.bili-header.bili-header--slide-down .right-entry {
 			/*这里把它们做成胶囊效果*/
 			backdrop-filter: var(--a-filter-glass);
 			border-radius: 100px;
@@ -1030,12 +1049,12 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 			background: var(--a-elevated-2);
 			padding: 0 !important;
 	}
-	.bili-header .slide-down .left-entry .mini-header__title,
-	.bili-header .slide-down .left-entry .entry-title,
-	.bili-header .slide-down .left-entry .default-entry,
-	.bili-header .slide-down .left-entry .loc-mc-box__text,
-	.bili-header .slide-down .left-entry .download-entry,
-	.bili-header .slide-down .left-entry .loc-entry {
+	.bili-header.bili-header--slide-down .left-entry .mini-header__title,
+	.bili-header.bili-header--slide-down .left-entry .entry-title,
+	.bili-header.bili-header--slide-down .left-entry .default-entry,
+	.bili-header.bili-header--slide-down .left-entry .loc-mc-box__text,
+	.bili-header.bili-header--slide-down .left-entry .download-entry,
+	.bili-header.bili-header--slide-down .left-entry .loc-entry {
 			color: var(--a-text-1);
 	}
 	/*顶栏登录*/
@@ -1055,8 +1074,8 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 			transition: color 1s, filter 1s, transform .3s, opacity .3s;
 	}
 	/*投稿图标不变色*/
-	.bili-header .slide-down [class$="entry"] span:not(:nth-last-child),
-	.bili-header .slide-down [class$="entry"] svg {
+	.bili-header.bili-header--slide-down [class$="entry"] span:not(:nth-last-child),
+	.bili-header.bili-header--slide-down [class$="entry"] svg {
 			color: var(--a-text-1)!important;
 	}
 	.bili-header .right-entry {
@@ -1065,7 +1084,7 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 			padding: 8px 0;
 			padding-left: 4px !important;
 	}
-	.bili-header :not(.slide-down) .right-entry {
+	.bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .right-entry {
 			padding: 0;
 	}
 	/*动态提示点*/
@@ -1089,7 +1108,7 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 			transition: .3s ease-out;
 			transform: translateY(100%);
 	}
-	.bili-header .bili-header__bar.slide-down .right-entry__outside .right-entry-text {
+	.bili-header.bili-header--slide-down .bili-header__bar .right-entry__outside .right-entry-text {
 			/*当顶部链接效果是效果二时，右侧面板的图标和文字都有 filter: drop-shadow 的效果。slide-down 时要去掉阴影效果*/
 			filter: unset;
 			/*color: var(--a-text-1)!important;*/
@@ -1103,7 +1122,7 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 			transition: .3s ease-out;
 			animation: none!important;
 	}
-	.bili-header .slide-down .right-entry__outside svg {
+	.bili-header.bili-header--slide-down .right-entry__outside svg {
 			filter: unset;
 	}
 	/*滑过图标显示触发图标上移显示文字动画*/
@@ -1173,7 +1192,7 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 	.bili-header .bili-header__banner .head-title {
 			display: none;
 	}
-	.bili-header .bili-header__bar.slide-down + .bili-header__banner::after {
+	.bili-header.bili-header--slide-down .bili-header__bar + .bili-header__banner::after {
 			background-color: var(--a-bgcolor);
 			filter: opacity(.6);
 	}
@@ -1210,11 +1229,11 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 					top: 100px!important;
 			}
 	}
-	.bili-header .slide-down .center-search-container::after {
+	.bili-header.bili-header--slide-down .center-search-container::after {
 			visibility: hidden;
 	}
 	/*搜索栏*/
-	.bili-header :not(.slide-down) .center-search-container {
+	.bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .center-search-container {
 			position: absolute;
 			width: 100%;
 			left: 0;
@@ -1272,17 +1291,17 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 			color: var(--a-theme-color);
 			filter: drop-shadow(0 0 6px var(--a-theme-color))
 	}
-	.slide-down #nav-searchform {
+	.bili-header--slide-down #nav-searchform {
 			/* 		box-shadow: var(--a-depth-2); */
 	}
 	.nav-search-input {
 			color: var(--a-text-1)!important;
 	}
-	.bili-header .slide-down .center-search-container .center-search__bar {
+	.bili-header.bili-header--slide-down .center-search-container .center-search__bar {
 			width: 100%;
 	}
 	/*这里修改搜索栏的上间距 margin-top*/
-	.bili-header :not(.slide-down) .center-search-container .center-search__bar {
+	.bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .center-search-container .center-search__bar {
 			transform: translateY(30vh);
 			width: 500px;
 			max-width: unset;
@@ -1291,31 +1310,31 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 			transition: transform .3s;
 	}
 	@media screen and (max-height: 830px) {
-			.bili-header :not(.slide-down) .center-search-container .center-search__bar {
+			.bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .center-search-container .center-search__bar {
 					transform: translateY(220px);
 			}
 	}
 	.center-search-container .center-search__bar #nav-searchform.is-actived:before,
 	.bili-header .center-search-container .center-search__bar #nav-searchform.is-focus:before,
 	.bili-header .center-search-container .center-search__bar #nav-searchform.is-focus,
-	.bili-header .slide-down .center-search-container .center-search__bar #nav-searchform,
-	.bili-header .slide-down .center-search-container .center-search__bar #nav-searchform.is-focus,
+	.bili-header.bili-header--slide-down .center-search-container .center-search__bar #nav-searchform,
+	.bili-header.bili-header--slide-down .center-search-container .center-search__bar #nav-searchform.is-focus,
 	.bili-header .center-search-container .center-search__bar #nav-searchform.is-actived .nav-search-content,
 	.bili-header .center-search-container .center-search__bar #nav-searchform.is-focus .nav-search-content,
 	.bili-header .center-search-container .center-search__bar .nav-search-content .nav-search-input:focus,
 	.bili-header .center-search-container .center-search__bar .nav-search-content .nav-search-input:active {
 			background: transparent;
 	}
-	.bili-header .slide-down .center-search-container .center-search__bar #nav-searchform,
-	.bili-header .slide-down .center-search-container .center-search__bar #nav-searchform:hover {
+	.bili-header.bili-header--slide-down .center-search-container .center-search__bar #nav-searchform,
+	.bili-header.bili-header--slide-down .center-search-container .center-search__bar #nav-searchform:hover {
 			background: var(--a-elevated-2)!important;
 			backdrop-filter: var(--a-filter-glass);
 	}
-	.bili-header .slide-down .center-search-container .center-search__bar #nav-searchform:hover,
+	.bili-header.bili-header--slide-down .center-search-container .center-search__bar #nav-searchform:hover,
 	.bili-header .center-search-container .center-search__bar #nav-searchform {
 			border: none;
 	}
-	.bili-header :not(.slide-down) .center-search-container .center-search__bar #nav-searchform {
+	.bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .center-search-container .center-search__bar #nav-searchform {
 			opacity: 1;
 			background-color: var(--a-elevated-1);
 			backdrop-filter: var(--a-filter-glass);
@@ -1352,7 +1371,7 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 			pointer-events: auto;
 			border-radius: var(--a-radius)!important;
 	}
-	.bili-header .slide-down .search-panel {
+	.bili-header.bili-header--slide-down .search-panel {
 			background: var(--a-elevated-2);
 	}
 	.bili-header .search-panel .history {
