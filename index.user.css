@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           bilibili搜索引擎首页样式
 @namespace      hakadao-bilibili-simple-home
-@version        1.9.5
+@version        1.9.6
 @description    b站搜索引擎首页样式风格，支持几种不同的样式效果
 @author         Hakadao <a578457889743@gmail.com> (https://hakadao.cc)
 @homepageURL    https://github.com/Rossel-G/bilibili-simple-home
@@ -918,9 +918,8 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 
 
 	/*去除礙眼物*/
-	/*顶栏左侧多余项目，保留首页按钮（新版为 div.left-entry__item，不再使用 li）
-	  首页在未滚动与吸顶两种状态下都保留，作为左上角唯一入口*/
-	.bili-header .left-entry .left-entry__item:not(.home-page-entry),
+	/*注：顶栏左侧导航（首页/番剧/直播/游戏中心/会员购/漫画/赛事/下载客户端）
+	  已全部保留，.left-entry-main 容器与其胶囊覆盖维持原样，不再隐藏任何一项*/
 	/*大会员（新版以 .vip-entry 标识，不再靠 li 序号）*/
 	.bili-header .right-entry .vip-entry,
 	/*热门搜寻*/
@@ -1050,25 +1049,29 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 			background: var(--a-elevated-2);
 			padding: 0 !important;
 	}
-	/*顶栏左侧内容 首页 —— 与右侧同款胶囊，左右两端视觉对称*/
+	/*顶栏左侧内容 首页 番剧 直播 游戏中心... —— 与右侧同款胶囊，左右两端视觉对称*/
 	.bili-header.bili-header--slide-down .left-entry {
 			backdrop-filter: var(--a-filter-glass);
 			border-radius: 100px;
 			box-shadow: var(--a-depth-2);
 			background: var(--a-elevated-2);
 			height: 38px;
-			padding: 0 12px !important;
+			padding: 0 14px !important;
 			color: var(--a-text-1);
 			transition: .3s;
 	}
 	.bili-header.bili-header--slide-down .left-entry .left-entry-main {
 			height: 100%;
 			background: transparent;
+			/*项目间距交给 gap 统一控制：B 站是 .left-entry__item{margin-right:20px}
+			  + :last-child{margin-right:0}，若末尾项恰是隐藏的 .left-loc-entry，
+			  末项就会留下 20px 外边距，胶囊内左右留白不对称*/
+			gap: 20px;
 	}
 	.bili-header.bili-header--slide-down .left-entry .left-entry__item,
 	.bili-header.bili-header--slide-down .left-entry .left-entry__item .left-entry__item-trigger {
 			height: 100%;
-			/*其余项目已隐藏，首页不必再留 20px 右间距，否则胶囊内左右不对称*/
+			/*左右间距统一由父级 gap 控制，清掉单项自带的 20px 右外边距*/
 			margin-right: 0;
 	}
 	/*胶囊是浅色底，首页图标默认会被 B 站的 white 色吃掉；这里只做兜底，
