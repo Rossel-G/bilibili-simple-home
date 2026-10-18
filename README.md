@@ -10,9 +10,9 @@ b站仿搜索引擎样式首页风格
 
 1. 安装 [Stylus for Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us/)
 
-2. [点击此处安装或更新样式](https://cdn.jsdelivr.net/gh/hakadao/bilibili-simple-home@master/index.user.css)
+2. [点击此处安装或更新样式](https://cdn.jsdelivr.net/gh/Rossel-G/bilibili-simple-home@master/index.user.css)
 
-3. [xStyle插件的在此处安装](https://ext.firefoxcn.net/xstyle/install/open.html?name=bilibili搜索引擎首页样式&code=https://cdn.jsdelivr.net/gh/hakadao/bilibili-simple-home@master/index.user.css)
+3. [xStyle插件的在此处安装](https://ext.firefoxcn.net/xstyle/install/open.html?name=bilibili搜索引擎首页样式&code=https://cdn.jsdelivr.net/gh/Rossel-G/bilibili-simple-home@master/index.user.css)
 
 4. [UserStyles.world 安装](https://userstyles.world/style/3022/bilibili)
 

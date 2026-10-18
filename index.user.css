@@ -1,11 +1,12 @@
 /* ==UserStyle==
 @name           bilibili搜索引擎首页样式
 @namespace      hakadao-bilibili-simple-home
-@version        1.9.2
+@version        1.9.3
 @description    b站搜索引擎首页样式风格，支持几种不同的样式效果
 @author         Hakadao <a578457889743@gmail.com> (https://hakadao.cc)
-@homepageURL    https://github.com/hakadao/bilibili-simple-home
-@supportURL     https://github.com/hakadao/bilibili-simple-home/issues
+@homepageURL    https://github.com/Rossel-G/bilibili-simple-home
+@supportURL     https://github.com/Rossel-G/bilibili-simple-home/issues
+@updateURL      https://raw.githubusercontent.com/Rossel-G/bilibili-simple-home/master/index.user.css
 @license        MIT
 @preprocessor   uso
 
@@ -917,11 +918,11 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 
 
 	/*去除礙眼物*/
-	/*顶栏左侧多余项目，保留首页按钮*/
-	.bili-header .left-entry li:not(:nth-child(1)),
-	.bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .bili-header__bar .left-entry li:nth-child(1),
-	/*大会员*/
-	.bili-header .right-entry li:nth-child(2),
+	/*顶栏左侧多余项目，保留首页按钮（新版为 div.left-entry__item，不再使用 li）*/
+	.bili-header .left-entry .left-entry__item:not(.home-page-entry),
+	.bili-header:not(.bili-header--slide-down):not(.bili-header--fixed) .bili-header__bar .left-entry .home-page-entry,
+	/*大会员（新版以 .vip-entry 标识，不再靠 li 序号）*/
+	.bili-header .right-entry .vip-entry,
 	/*热门搜寻*/
 	.search-panel .trending,
 	/*推广*/
