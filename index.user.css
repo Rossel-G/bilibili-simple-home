@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           bilibili搜索引擎首页样式
 @namespace      hakadao-bilibili-simple-home
-@version        1.9.6
+@version        1.9.7
 @description    b站搜索引擎首页样式风格，支持几种不同的样式效果
 @author         Hakadao <a578457889743@gmail.com> (https://hakadao.cc)
 @homepageURL    https://github.com/Rossel-G/bilibili-simple-home
@@ -1271,6 +1271,15 @@ THEME_DARK_AUTO "暗色模式（跟随系统）" <<<EOT
 			margin: 0;
 			display: flex;
 			justify-content: center;
+			/*未滚动时这一层为了在整条顶栏内水平居中搜索框而铺满全宽，
+			  变成一个横贯顶栏的透明盒子。它是定位元素，而 .left-entry 虽为
+			  position:relative，在 DOM 中却排得更靠前，同为 z-index:auto 时
+			  按文档顺序由该容器压在上面，于是首页/番剧/直播/游戏中心等点击
+			  全部落在容器空盒上而无响应。
+			  容器本身不承载任何交互（交互全在 .center-search__bar 的子元素上，
+			  见下方 pointer-events 规则），因此直接让它不接收指针事件，
+			  点击即可穿透到左侧导航*/
+			pointer-events: none;
 	}
 	/*搜索栏输入框文字清除图标*/
 	.bili-header .center-search-container .center-search__bar .nav-search-content .nav-search-clean svg * {
